@@ -4,4 +4,5 @@ export default {
     client_id: '',
     client_secret: '',
   },
+  allowedOrigins: 'http://localhost:3000',
 };
