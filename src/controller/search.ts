@@ -5,7 +5,7 @@ import { parseTracks } from '../utils/spotify';
 const search = async (req: Request, res: Response) => {
   try {
     const { q, type } = req.query as { q: string; type: string };
-    const result = await searchItems({ q, type, limit: 5 });
+    const result = await searchItems({ q, type, limit: 10 });
     const parsedResult = parseTracks(result);
     res.json(parsedResult);
   } catch (error) {
