@@ -11,7 +11,7 @@ const app = express();
 const port = config.get('PORT') ?? 3002;
 
 appMiddleware(app);
-app.use(baseRoutes);
+app.use('/api/v1', baseRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
