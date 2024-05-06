@@ -1,5 +1,6 @@
 import config from 'config';
 import jwt from 'jsonwebtoken';
+import UserDb from '../service/userDb';
 
 interface jwtPayload {
   userId: number;
@@ -17,11 +18,9 @@ interface GoogleOAuthJson {
   hd: string;
 }
 
-const usersDb = new Map();
-
 // const PRIVATE_KEY: any = config.get('userAccessToken.privateKey');
 const SECRET_KEY = 'CHANGE_THIS_TO_PRIVATE_KEY'; // TODO: fix this to public private key auth
-
+const userDb = UserDb.getInstance();
 /**
  * Generates the JWT
  *
@@ -67,12 +66,12 @@ const loginOrSignupWithGoogle = async (
   googleProfile: GoogleOAuthJson
 ): Promise<any> => {
   try {
-    const user = usersDb.has(googleProfile.email);
+    const user = userDb.checkUser(googleProfile.sub);
     if (!user) {
-      usersDb.set(googleProfile.email, googleProfile);
+      userDb.setUser(googleProfile.sub, googleProfile);
     }
 
-    return usersDb.get(googleProfile.email);
+    return userDb.getUser(googleProfile.sub);
   } catch (err: any) {
     console.error('loginOrSignupWithGoogle:: Error in authenticating user', {
       err,
