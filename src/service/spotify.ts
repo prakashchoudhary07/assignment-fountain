@@ -52,7 +52,7 @@ const getAccessToken = async () => {
 const searchItems = async ({
   q,
   type = 'track',
-  market = 'IN',
+  market = 'ES',
   limit = 10,
   offset = 0,
 }: searchItemParams) => {
