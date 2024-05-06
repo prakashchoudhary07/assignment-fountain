@@ -6,10 +6,12 @@ import UserDb from '../service/userDb';
 const userDb = UserDb.getInstance();
 
 const COOKIE_NAME: string = config.get('userAccessToken.cookieName');
-console.log({ COOKIE_NAME });
+interface CustomRequest extends Request {
+  userId?: string;
+}
 
 const authenticate = async (
-  req: Request,
+  req: CustomRequest,
   res: Response,
   next: NextFunction
 ): Promise<any | Response> => {
@@ -18,6 +20,7 @@ const authenticate = async (
     const { userId } = authService.verifyAuthToken(token);
     const isUserIdValid = userDb.checkUser(userId);
     if (isUserIdValid) {
+      req.userId = userId;
       return next();
     }
     throw new Error('Failed to verify the user');
@@ -28,3 +31,4 @@ const authenticate = async (
 };
 
 export default authenticate;
+export type { CustomRequest };
