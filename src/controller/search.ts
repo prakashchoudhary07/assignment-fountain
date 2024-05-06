@@ -7,7 +7,7 @@ const search = async (req: Request, res: Response) => {
     const { q, type } = req.query as { q: string; type: string };
     const result = await searchItems({ q, type, limit: 10 });
     const parsedResult = parseTracks(result);
-    res.json(parsedResult);
+    res.json({ data: parsedResult });
   } catch (error) {
     console.error('Error occurred', error);
     res.status(500).json({ message: 'Internal Server Error' });
