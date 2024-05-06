@@ -12,6 +12,42 @@ Install all packages by navigating to the project folder
 npm install
 ```
 
+### Set the required environment variables
+
+You can create a new file called `local.js` at `src/config` and copy the contents of `src/config/defaults.js` to it and add the API keys
+
+Keys required
+
+Spotify keys
+
+- spotify client_id
+- spotify client_secret
+
+This doc can be referred https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+
+Google oauth2 keys
+
+- google oauth2 client_id
+- google oauth2 client_secret
+
+This doc can be referred for further help: https://support.google.com/cloud/answer/6158849?hl=en, https://developers.google.com/identity/protocols/oauth2/web-server
+
+Set thees env keys
+
+```bash
+export PORT=value
+export SPOTIFY_CLIENT_ID=value
+export SPOTIFY_CLIENT_SECRET=value
+export ALLOWED_ORIGINS=value
+export USER_TOKEN_COOKIE_NAME=value
+export USER_TOKEN_COOKIE_DOMAIN=value
+export USER_TOKEN_TTL=value
+export GOOGLE_OAUTH20_CLIENT_ID=value
+export GOOGLE_OAUTH20_CLIENT_SECRET=value
+export API_BASE_URL=value
+export UI_BASE_URL=value
+```
+
 To run the development server:
 
 ```bash
