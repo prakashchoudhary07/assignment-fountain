@@ -5,4 +5,22 @@ module.exports = {
     client_secret: 'SPOTIFY_CLIENT_SECRET',
   },
   allowedOrigins: 'ALLOWED_ORIGINS',
+  userAccessToken: {
+    cookieName: 'USER_TOKEN_COOKIE_NAME',
+    cookieDomain: 'USER_TOKEN_COOKIE_DOMAIN',
+    ttl: {
+      __name: 'USER_TOKEN_TTL',
+      __format: 'number',
+    },
+    refreshTtl: {
+      __name: 'USER_TOKEN_REFRESH_TTL',
+      __format: 'number',
+    },
+    publicKey: 'PUBLIC_KEY',
+    privateKey: 'PRIVATE_KEY',
+  },
+  googleOauth20: {
+    clientId: 'GOOGLE_OAUTH20_CLIENT_ID',
+    clientSecret: 'GOOGLE_OAUTH20_CLIENT_SECRET',
+  },
 };
