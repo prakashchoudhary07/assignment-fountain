@@ -62,6 +62,7 @@ const googleAuthCallback = (
     )(req, res, next);
   } catch (err: any) {
     console.error(err);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };
 
