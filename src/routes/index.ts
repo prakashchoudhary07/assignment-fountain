@@ -7,9 +7,11 @@ import authenticate from '../middleware/authenticate';
 
 const router = Router();
 
-router.use('/auth', auth);
-router.use('/users', authenticate, users);
-router.use('/search', authenticate, search);
+const PREFIX = '/api/v1';
+
+router.use(PREFIX + '/auth', auth);
+router.use(PREFIX + '/users', authenticate, users);
+router.use(PREFIX + '/search', authenticate, search);
 
 // Handel unknown routes
 router.use((_req: Request, res: Response) => {

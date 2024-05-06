@@ -12,7 +12,7 @@ const app = express();
 const port = config.get('PORT') ?? 3002;
 
 appMiddleware(app);
-app.use('/api/v1', baseRoutes);
+app.use(baseRoutes);
 app.use(errorHandler);
 
 app.listen(port, () => {
